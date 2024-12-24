@@ -1,6 +1,5 @@
 package com.technivaaran.coe.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,9 +21,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AuthController {
 
-	@Autowired
 	private UserService userService;
 
+	public AuthController(UserService userService) {
+		this.userService = userService;
+	}
+
+	@SuppressWarnings("null")
 	@PostMapping(value = "/validate")
 	public String validateUser(@RequestBody AppUserDto appUserDto, Model model) {
 		try {
@@ -32,8 +35,6 @@ public class AuthController {
 					appUserDto.getPassword());
 			model.addAttribute("user", userResponseDto);
 
-			// return "desktop";
-			//return "/candidate/profile";
 			return "dashboardLayout/dashboard";
 		} catch (UserNotFoundException e) {
 			RequestContextHolder.getRequestAttributes().setAttribute("errorMsg", e.getMessage(),

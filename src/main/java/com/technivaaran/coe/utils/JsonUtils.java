@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Map;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -17,6 +17,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JsonUtils {
 
+    private JsonUtils() {
+    }
+
     private static ObjectMapper mapper = new ObjectMapper();
 
     /**
@@ -26,7 +29,7 @@ public class JsonUtils {
      * @throws JsonMappingException
      * @throws IOException
      */
-    public static String toJson(Object object) throws JsonGenerationException, JsonMappingException, IOException {
+    public static String toJson(Object object) throws IOException {
         return mapper.writeValueAsString(object);
     }
 
@@ -36,12 +39,10 @@ public class JsonUtils {
      * @param jsonString JSON string
      * @param clazz      class of target entity
      * @return Instance of class of given type
-     * @throws JsonParseException
-     * @throws JsonMappingException
      * @throws IOException
      */
     public static <T> T fromJson(String jsonString, Class<T> clazz)
-            throws JsonParseException, JsonMappingException, IOException {
+            throws IOException {
         return mapper.readValue(jsonString, clazz);
     }
 
@@ -51,12 +52,10 @@ public class JsonUtils {
      * @param fromValue JSON source
      * @param clazz     class of target entity
      * @return Instance of class of given type
-     * @throws JsonParseException
-     * @throws JsonMappingException
      * @throws IOException
      */
     public static <T> T convertValue(Object fromValue, Class<T> clazz)
-            throws JsonParseException, JsonMappingException, IOException {
+            throws IOException {
         return mapper.convertValue(fromValue, clazz);
     }
 
@@ -70,13 +69,11 @@ public class JsonUtils {
      * @param mixins
      *                   map of mixins (target, mixinSource) to be added to mapper
      * @return Instance of class of given type
-     * @throws JsonParseException
-     * @throws JsonMappingException
      * @throws IOException
      */
     @SuppressWarnings("rawtypes")
     public static <T> T fromJson(String jsonString, Class<T> clazz, Map<Class, Class> mixins)
-            throws JsonParseException, JsonMappingException, IOException {
+            throws IOException {
         for (Map.Entry<Class, Class> entry : mixins.entrySet()) {
             mapper.addMixIn(entry.getKey(), entry.getValue());
         }
@@ -89,12 +86,10 @@ public class JsonUtils {
      * @param jsonString JSON string
      * @param type       class of target entity with template class
      * @return Instance of class of given type
-     * @throws JsonParseException
-     * @throws JsonMappingException
      * @throws IOException
      */
     public static <T> T fromJson(String jsonString, JavaType type)
-            throws JsonParseException, JsonMappingException, IOException {
+            throws IOException {
         return mapper.readValue(jsonString, type);
     }
 
@@ -102,12 +97,10 @@ public class JsonUtils {
      * @param jsonString
      * @param type
      * @return T
-     * @throws JsonParseException
-     * @throws JsonMappingException
      * @throws IOException
      */
     public static <T> T fromJson(String jsonString, TypeReference<T> type)
-            throws JsonParseException, JsonMappingException, IOException {
+            throws IOException {
         return mapper.readValue(jsonString, type);
     }
 
@@ -132,7 +125,7 @@ public class JsonUtils {
      * @return value
      * @throws Exception
      */
-    public static String getValue(final String json, final String fieldName) throws Exception {
+    public static String getValue(final String json, final String fieldName) throws JsonProcessingException {
         JsonNode rootNode = mapper.readTree(json);
         if (rootNode.has(fieldName)) {
             return rootNode.findValue(fieldName).textValue();
