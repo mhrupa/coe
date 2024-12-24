@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Question and Answer UI</title>
+    <script>
+      $(document).ready(function () {
+        $("#candidateName").html(candidateName);
+        fetchRandomQuestion(1, topicList, experienceLevel);
+
+        $("#next-btn").click(() => fetchRandomQuestion(1, topicList, experienceLevel));
+
+      });
+    </script>
+  </head>
+  <body>
+    <div class="card mb-4">
+      <div class="card-header">Candidate Name: <span id="candidateName"></span></div>
+      <div class="card-body">
+        <div class="container my-4">
+          <!-- Next Button -->
+          <div class="mb-3 text-end">
+            <button class="btn btn-primary" id="next-btn">Next</button>
+          </div>
+
+          <!-- Section: Question and Answer side by side -->
+          <div class="d-flex justify-content-between mb-3">
+            <!-- Question -->
+            <div class="card me-3" style="width: 48%">
+              <div class="card-header bg-warning">
+                <h5 class="mb-0">Question</h5>
+              </div>
+              <div class="card-body">
+                <p id="question-text"></p>
+              </div>
+            </div>
+
+            <!-- Answer -->
+            <div class="card" style="width: 48%">
+              <div class="card-header bg-success text-white">
+                <h5 class="mb-0">Answer</h5>
+              </div>
+              <div class="card-body">
+                <p id="answer-text"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

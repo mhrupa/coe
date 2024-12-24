@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Candidate Profile</title>
+    <script>
+      $(document).ready(function () {
+        $("#startScreeningBtn").click(validateAndSubmitRequest);
+      });
+
+      function validateAndSubmitRequest() {
+        candidateName = $("#candidateName").val();
+        if (candidateName == "") {
+          showErrorToast("Please enter Candidate name.");
+          $("#candidateName").focus();
+          return false;
+        }
+
+        experienceLevel = $("#experienceLevel").val();
+        if (experienceLevel == "") {
+          showErrorToast("select experience level");
+          $("#experienceLevel").focus();
+          return false;
+        }
+        topicList = [];
+        topicList.push($("#skill").val());
+
+        if (topicList.length == 0) {
+          showErrorToast("select Topics.");
+          $("#topicList").focus();
+          return false;
+        }
+
+        $("#dashboardContent").load("/candidate-screening");
+      }
+    </script>
+  </head>
+  <body>
+    <div class="card mb-4">
+      <div class="card-header">Select Candidate Profile for Screening</div>
+      <div class="card-body">
+        <form>
+          <!-- Candidate Name -->
+          <div class="mb-3">
+            <label for="candidateName" class="form-label">Candidate Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="candidateName"
+              placeholder="Enter candidate's name"
+              required
+            />
+          </div>
+
+          <!-- Experience Level -->
+          <div class="mb-3">
+            <label for="experienceLevel" class="form-label"
+              >Experience Level</label
+            >
+            <select class="form-select" id="experienceLevel" required>
+              <option value="">Select Experience Level</option>
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Expert">Expert</option>
+            </select>
+          </div>
+
+          <!-- Skills -->
+          <div class="mb-3">
+            <label for="skill" class="form-label">Skills</label>
+            <select class="form-select" id="skill" required>
+              <option value="Core Java">Java</option>
+              <option value="QA">QA</option>
+              <option value="JavaScript">UI</option>
+              <option value="Python">Python</option>
+              <option value="C#">C#</option>
+            </select>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="d-flex justify-content-center">
+            <button
+              type="button"
+              id="startScreeningBtn"
+              class="btn btn-primary"
+            >
+              Start Screening
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<script>
+  function handleMenuClick(menuName) {
+    $("#dashboardContent").load(menuName);
+  }
+</script>
+<ul class="nav flex-column">
+  <li class="nav-item">
+    <a class="nav-link text-white" href="#" id="dashboard" onclick="handleMenuClick('/candidate-profile')">Dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-white" href="#">Create Profile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-white" href="#">Settings</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-white" href="#">Reports</a>
+  </li>
+</ul>
