@@ -25,9 +25,14 @@ public class NavigationController {
 		return "dashboardLayout/sidebar";
 	}
 
+	@GetMapping(value = "/dashboard")
+	public String getDashboard() {
+		return "candidate/profile";
+	}
+
 	@GetMapping(value = "/candidate-profile")
 	public String getCandidateProfile() {
-		return "candidate/profile";
+		return "candidate/createProfile";
 	}
 
 	@GetMapping(value = "/candidate-screening")

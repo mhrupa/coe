@@ -10,8 +10,8 @@ import com.technivaaran.coe.utils.AppConstants;
 @RequestMapping(AppConstants.BASE_URL)
 public class ScreeningController {
 
-    @PostMapping
+    
     public void createScrenningTest() {
-        
+
     }
 }

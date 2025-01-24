@@ -52,7 +52,7 @@ The "COE" project appears to be related to a Centre of Excellence initiative. Wh
 ## Contact
 For any questions or suggestions, please contact:
 - **Rupesh Mhatre**
-- Email: [Your Email Address]
+- Email: mhrupa@gmail.com
 
 ---
 This document is a placeholder and should be updated with more details as the project progresses.
