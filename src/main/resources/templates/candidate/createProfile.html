@@ -1,104 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Candidate Profile</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create or Update Candidate</title>
+  </head>
+  <body>
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Candidate Profile</h1>
-        <form id="candidateForm">
-            <input type="hidden" id="candidateId" name="id">
-            <div class="mb-3">
-                <label for="firstName" class="form-label">First Name</label>
-                <input type="text" class="form-control" id="firstName" name="firstName" required>
+      <div class="card shadow">
+        <div class="card-header">
+          <h5>Create or Update Candidate</h5>
+        </div>
+        <div class="card-body">
+          <form id="candidateForm">
+            <input type="hidden" id="candidateId" name="id" />
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter First Name" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter Last Name" required>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="lastName" class="form-label">Last Name</label>
-                <input type="text" class="form-control" id="lastName" name="lastName" required>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="phoneNumber" class="form-label">Phone Number</label>
+                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number">
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="dateOfBirth" class="form-label">Date of Birth</label>
+                    <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="skills" class="form-label">Skills</label>
+                    <input type="text" class="form-control" id="skills" name="skills" placeholder="Enter Skills">
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="phoneNumber" class="form-label">Phone Number</label>
-                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber">
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="experienceYears" class="form-label">Experience (Years)</label>
+                    <input type="number" class="form-control" id="experienceYears" name="experienceYears" placeholder="Enter Experience in Years">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="resumeUrl" class="form-label">Resume URL</label>
+                    <input type="url" class="form-control" id="resumeUrl" name="resumeUrl" placeholder="Enter Resume URL">
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="dateOfBirth" class="form-label">Date of Birth</label>
-                <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth">
+
+
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary" id="saveButton">
+                Save Candidate Profile
+              </button>
             </div>
-            <div class="mb-3">
-                <label for="skills" class="form-label">Skills</label>
-                <input type="text" class="form-control" id="skills" name="skills">
-            </div>
-            <div class="mb-3">
-                <label for="experienceYears" class="form-label">Experience (Years)</label>
-                <input type="number" class="form-control" id="experienceYears" name="experienceYears">
-            </div>
-            <div class="mb-3">
-                <label for="resumeUrl" class="form-label">Resume URL</label>
-                <input type="url" class="form-control" id="resumeUrl" name="resumeUrl">
-            </div>
-            <button type="submit" class="btn btn-primary" id="saveButton">Save Candidate</button>
-        </form>
+          </form>
+        </div>
+      </div>
     </div>
 
     <script>
-        $(document).ready(function () {
-            const candidateId = new URLSearchParams(window.location.search).get('id');
-            
-            if (candidateId) {
-                // Fetch candidate data for update
-                $.get(`/api/candidates/${candidateId}`, function (data) {
-                    $('#candidateId').val(data.id);
-                    $('#firstName').val(data.firstName);
-                    $('#lastName').val(data.lastName);
-                    $('#email').val(data.email);
-                    $('#phoneNumber').val(data.phoneNumber);
-                    $('#dateOfBirth').val(data.dateOfBirth);
-                    $('#skills').val(data.skills);
-                    $('#experienceYears').val(data.experienceYears);
-                    $('#resumeUrl').val(data.resumeUrl);
-                    $('#saveButton').text('Update Candidate');
-                });
-            }
+      $(document).ready(function () {
+        const candidateId = new URLSearchParams(window.location.search).get(
+          "id"
+        );
 
-            $('#candidateForm').submit(function (e) {
-                e.preventDefault();
+        if (candidateId) {
+          // Fetch candidate data for update
+          $.get(`/api/candidates/${candidateId}`, function (data) {
+            $("#candidateId").val(data.id);
+            $("#firstName").val(data.firstName);
+            $("#lastName").val(data.lastName);
+            $("#email").val(data.email);
+            $("#phoneNumber").val(data.phoneNumber);
+            $("#dateOfBirth").val(data.dateOfBirth);
+            $("#skills").val(data.skills);
+            $("#experienceYears").val(data.experienceYears);
+            $("#resumeUrl").val(data.resumeUrl);
+            $("#saveButton").text("Update Candidate");
+          });
+        }
 
-                const candidateData = {
-                    id: $('#candidateId').val(),
-                    firstName: $('#firstName').val(),
-                    lastName: $('#lastName').val(),
-                    email: $('#email').val(),
-                    phoneNumber: $('#phoneNumber').val(),
-                    dateOfBirth: $('#dateOfBirth').val(),
-                    skills: $('#skills').val(),
-                    experienceYears: $('#experienceYears').val(),
-                    resumeUrl: $('#resumeUrl').val()
-                };
+        $("#candidateForm").submit(function (e) {
+          e.preventDefault();
 
-                const url = candidateId ? `/api/candidates/${candidateId}` : '/api/candidates';
-                const method = candidateId ? 'PUT' : 'POST';
+          const candidateData = {
+            id: $("#candidateId").val(),
+            firstName: $("#firstName").val(),
+            lastName: $("#lastName").val(),
+            email: $("#email").val(),
+            phoneNumber: $("#phoneNumber").val(),
+            dateOfBirth: $("#dateOfBirth").val(),
+            skills: $("#skills").val(),
+            experienceYears: $("#experienceYears").val(),
+            resumeUrl: $("#resumeUrl").val(),
+          };
 
-                $.ajax({
-                    url: url,
-                    method: method,
-                    contentType: 'application/json',
-                    data: JSON.stringify(candidateData),
-                    success: function () {
-                        alert(candidateId ? 'Candidate updated successfully!' : 'Candidate created successfully!');
-                        window.location.href = '/dashboard';
-                    },
-                    error: function (xhr) {
-                        alert(`Error: ${xhr.responseText}`);
-                    }
-                });
-            });
+          const url = candidateId
+            ? `/api/candidates/${candidateId}`
+            : "/api/candidates";
+          const method = candidateId ? "PUT" : "POST";
+
+          $.ajax({
+            url: url,
+            method: method,
+            contentType: "application/json",
+            data: JSON.stringify(candidateData),
+            success: function () {
+              alert(
+                candidateId
+                  ? "Candidate updated successfully!"
+                  : "Candidate created successfully!"
+              );
+              window.location.href = "/dashboard";
+            },
+            error: function (xhr) {
+              alert(`Error: ${xhr.responseText}`);
+            },
+          });
         });
+      });
     </script>
-</body>
+  </body>
 </html>
