@@ -61,15 +61,7 @@
 
 <body style="background-color: #F2F6FC;">
 
-  <header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow">
-    <div class="navbar-nav p-2">
-      <span data-feather="menu" class="navbar-toggler"></span>
-      <div class="nav-item text-nowrap">
-        <a class="nav-link px-3" href="#">Sign out</a>
-      </div>
-    </div>
-  </header>
-
+  <div th:replace="dashboardLayout/header :: header"></div>
   <div class="container-fluid">
     <div class="row">
       <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse shadow">
