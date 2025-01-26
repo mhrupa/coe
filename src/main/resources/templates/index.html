@@ -32,18 +32,38 @@
       }
     }
   </style>
+  <script>
+    $(document).ready(function () {
+      feather.replace();
+
+      $('.side-nav-menu-heading').on('click', function () {
+        const $this = $(this);
+
+        // Close all other menu headings
+        $('.side-nav-menu-heading').not($this).each(function () {
+          $(this)
+            .addClass('collapsed')
+            .attr('data-bs-toggle', 'collapse')
+            .attr('aria-expanded', 'false');
+          const targetId = $(this).data('bs-target');
+          if (targetId) {
+            $(targetId).removeClass('show');
+          }
+        });
+
+        $('.side-nav-menu-heading').removeClass('active');
+        $(this).addClass('active');
+      });
+    });
+
+  </script>
 </head>
 
 <body style="background-color: #F2F6FC;">
 
   <header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow">
-    <!-- <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a> -->
-    <!-- <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
-      data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon">☰yeyryt</span>
-    </button> -->
-    <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
     <div class="navbar-nav p-2">
+      <span data-feather="menu" class="navbar-toggler"></span>
       <div class="nav-item text-nowrap">
         <a class="nav-link px-3" href="#">Sign out</a>
       </div>
@@ -57,50 +77,22 @@
           <ul class="list-unstyled ps-0">
             <li class="mb-1">
               <a style="display: flex;" class="side-nav-link side-nav-menu-heading btn align-items-center collapsed"
-                data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-                <div style="outline: none;" class="feather feather-activity" data-icon="angle-down">
-                </div>
-                Home
-                <div style="outline: none;" class="btn-toggle feather feather-activity" data-icon="angle-down">
-                </div>
+                data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true">
+                <span data-feather="activity"></span><span class="ps-1">Dashboard</span>
               </a>
-              <div class="collapse show" id="home-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                  <li><a href="#" class="link-dark rounded">Overview</a></li>
-                  <li><a href="#" class="link-dark rounded">Updates</a></li>
-                  <li><a href="#" class="link-dark rounded">Reports</a></li>
-                </ul>
-              </div>
             </li>
             <li class="mb-1">
               <a style="display: flex;" class="side-nav-link side-nav-menu-heading btn align-items-center collapsed"
-                data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-                Dashboard
-                <div style="outline: none;" class="btn-toggle feather feather-activity" data-icon="angle-down">
+                data-bs-toggle="collapse" data-bs-target="#candidate-collapse" aria-expanded="false">
+                <span data-feather="home"></span><span class="ps-1">Cadidate</span>
+                <div style="outline: none;" class="side-nav-menu btn-toggle" data-icon="angle-down">
                 </div>
               </a>
-              <div class="collapse" id="dashboard-collapse">
+              <div class="collapse" id="candidate-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                   <li><a href="#" class="link-dark rounded">Overview</a></li>
-                  <li><a href="#" class="link-dark rounded">Weekly</a></li>
-                  <li><a href="#" class="link-dark rounded">Monthly</a></li>
-                  <li><a href="#" class="link-dark rounded">Annually</a></li>
-                </ul>
-              </div>
-            </li>
-            <li class="mb-1">
-              <a style="display: flex;" class="side-nav-link side-nav-menu-heading btn align-items-center collapsed"
-                data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-                Orders
-                <div style="outline: none;" class="btn-toggle feather feather-activity" data-icon="angle-down">
-                </div>
-              </a>
-              <div class="collapse" id="orders-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                  <li><a href="#" class="link-dark rounded">New</a></li>
-                  <li><a href="#" class="link-dark rounded">Processed</a></li>
-                  <li><a href="#" class="link-dark rounded">Shipped</a></li>
-                  <li><a href="#" class="link-dark rounded">Returned</a></li>
+                  <li><a href="#" class="link-dark rounded">Add</a></li>
+                  <li><a href="#" class="link-dark rounded">Update</a></li>
                 </ul>
               </div>
             </li>
