@@ -1,0 +1,13 @@
+.form-label-extra-small {
+    font-size: 0.85rem;
+}
+
+input::placeholder, textarea::placeholder {
+    font-size: 0.9rem; /* Adjust the font size as needed */
+    color: #6c757d; /* Optional: Change placeholder color */
+}
+
+select {
+    font-size: 0.8rem; /* Adjust the font size */
+    color: #6c757d; /* Optional: Change color */
+}

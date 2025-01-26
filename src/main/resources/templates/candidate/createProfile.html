@@ -6,57 +6,46 @@
     <title>Create or Update Candidate</title>
   </head>
   <body>
-    <div class="container mt-5">
+    <div class="container mt-5" style="width: 800px;">
       <div class="card shadow">
         <div class="card-header">
-          <h5>Create or Update Candidate</h5>
+          <h6 class="mb-0  p-2">Create or Update Candidate</h6>
         </div>
         <div class="card-body">
           <form id="candidateForm">
             <input type="hidden" id="candidateId" name="id" />
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="firstName" class="form-label">First Name</label>
-                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter First Name" required>
+                <div class="form-floating mb-2">
+                    <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                    <label for="firstName" class="form-label-extra-small  mb-0">First Name</label>
                 </div>
-                <div class="col-md-6 mb-3">
-                    <label for="lastName" class="form-label">Last Name</label>
-                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter Last Name" required>
+                <div class="form-floating mb-2">
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
+                    <label for="lastName" class="form-label-extra-small  mb-0">Last Name</label>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" required>
+                <div class="form-floating mb-2">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                    <label for="email" class="form-label-extra-small  mb-0">Email</label>
                 </div>
-                <div class="col-md-6 mb-3">
-                    <label for="phoneNumber" class="form-label">Phone Number</label>
-                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number">
+                <div class="form-floating mb-2">
+                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone Number">
+                    <label for="phoneNumber" class="form-label-extra-small  mb-0">Phone Number</label>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="dateOfBirth" class="form-label">Date of Birth</label>
+                <div class="form-floating mb-2">
                     <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth">
+                    <label for="dateOfBirth" class="form-label-extra-small  mb-0">Date of Birth</label>
                 </div>
-                <div class="col-md-6 mb-3">
-                    <label for="skills" class="form-label">Skills</label>
-                    <input type="text" class="form-control" id="skills" name="skills" placeholder="Enter Skills">
+                <div class="form-floating mb-2">
+                    <input type="text" class="form-control" id="skills" name="skills" placeholder="Skills">
+                    <label for="skills" class="form-label-extra-small  mb-0">Skills</label>
                 </div>
+                <div class="form-floating mb-2">
+                    <input type="number" class="form-control" id="experienceYears" name="experienceYears" placeholder="Experience in Years">
+                    <label for="experienceYears" class="form-label-extra-small  mb-0">Experience (Years)</label>
+                </div>
+                <div class="form-floating mb-2">
+                    <input type="url" class="form-control" id="resumeUrl" name="resumeUrl" placeholder="Resume URL">
+                    <label for="resumeUrl" class="form-label-extra-small  mb-0">Resume URL</label>
             </div>
-
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="experienceYears" class="form-label">Experience (Years)</label>
-                    <input type="number" class="form-control" id="experienceYears" name="experienceYears" placeholder="Enter Experience in Years">
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="resumeUrl" class="form-label">Resume URL</label>
-                    <input type="url" class="form-control" id="resumeUrl" name="resumeUrl" placeholder="Enter Resume URL">
-                </div>
-            </div>
-
 
             <div class="text-center">
               <button type="submit" class="btn btn-primary" id="saveButton">

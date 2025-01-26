@@ -1,63 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CoE</title>
-    <script>
-      $(document).ready(function () {
-        $("#sidebarMenu").load("/sidebar");
-        $("#dashboardContent").load("/dashboard");
 
-        const toggleSidebarButton = document.getElementById("toggle-sidebar");
-        toggleSidebarButton.addEventListener("click", toggleSideBar);
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CoE</title>
+  <script>
+    $(document).ready(function () {
+      $("#sidebarMenu").load("/sidebar");
+      $("#dashboardContent").load("/dashboard");
 
-        toggleSideBar();
-      });
+      const toggleSidebarButton = document.getElementById("toggle-sidebar");
+      toggleSidebarButton.addEventListener("click", toggleSideBar);
 
-      function toggleSideBar() {
-        const sidebar = document.querySelector(".sidebar");
-        sidebar.classList.toggle("d-none");
-      }
-    </script>
-  </head>
-  <body>
-    <!-- Main Wrapper -->
-    <div class="d-flex" id="app-wrapper">
+      toggleSideBar();
+    });
+
+    function toggleSideBar() {
+      const sidebar = document.querySelector(".sidebar");
+      sidebar.classList.toggle("d-none");
+    }
+  </script>
+</head>
+
+<body>
+  <!-- Main Wrapper -->
+  <div class="d-flex" id="app-wrapper">
+    <!-- Main Content Area -->
+    <div class="main-content p-4 shadow" style="flex: 1">
+      <!-- Header Section -->
+      <header class="d-flex justify-content-between align-items-center mb-4">
+        <div class="d-flex align-items-center">
+          <button class="btn btn-sm btn-outline-secondary me-3" id="toggle-sidebar">
+            ☰
+          </button>
+          <h4>Welcome to Center of Excellence</h4>
+        </div>
+        <div>
+          <span id="user-email"><span th:text="${user.email}"></span></span>
+          <button class="btn btn-sm btn-danger ms-3">Logout</button>
+        </div>
+      </header>
+      <!-- Main Content Goes Here -->
+      <div class="content-area">
+        <!-- Example of a card -->
+        <div id="dashboardContent"></div>
+        <!-- Additional content can be added here -->
+      </div>
+
       <!-- Sidebar -->
-      <div data-include="/path/to/include.html"></div>
-      <div
-        class="sidebar bg-dark text-white p-3"
-        style="width: 250px; height: 100vh"
-      >
+      <div class="sidebar bg-dark text-white p-3" style="width: 250px; height: 100vh">
         <div id="sidebarMenu" style="width: 100%"></div>
       </div>
-
-      <!-- Main Content Area -->
-      <div class="main-content p-4" style="flex: 1">
-        <!-- Header Section -->
-        <header class="d-flex justify-content-between align-items-center mb-4">
-          <div class="d-flex align-items-center">
-            <button
-              class="btn btn-sm btn-outline-secondary me-3"
-              id="toggle-sidebar"
-            >
-              ☰
-            </button>
-            <h4>Welcome to Center of Excellence</h4>
-          </div>
-          <div>
-            <span id="user-email"><span th:text="${user.email}"></span></span>
-            <button class="btn btn-sm btn-danger ms-3">Logout</button>
-          </div>
-        </header>
-        <!-- Main Content Goes Here -->
-        <div class="content-area">
-          <!-- Example of a card -->
-          <div id="dashboardContent"></div>
-          <!-- Additional content can be added here -->
-        </div>
-      </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
