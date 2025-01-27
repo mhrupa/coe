@@ -1,10 +1,12 @@
 package com.technivaaran.coe.services;
 
-import com.technivaaran.coe.entities.Candidate;
-import com.technivaaran.coe.repositories.CandidateRepository;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import com.technivaaran.coe.entities.Candidate;
+import com.technivaaran.coe.repositories.CandidateRepository;
 
 @Service
 public class CandidateService {
@@ -13,6 +15,10 @@ public class CandidateService {
 
     public CandidateService(CandidateRepository candidateRepository) {
         this.candidateRepository = candidateRepository;
+    }
+
+    public List<Candidate> getCandidates() {
+        return candidateRepository.findAll();
     }
 
     public Candidate createCandidate(Candidate candidate) {

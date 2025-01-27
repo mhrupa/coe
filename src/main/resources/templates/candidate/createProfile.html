@@ -5,6 +5,83 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Create Candidate</title>
+  <script>
+    $(document).ready(function () {
+      $("#saveButton").on("click", saveCadidate)
+
+    });
+
+    function saveCadidate() {
+
+
+      const candidateData = {
+        //id: $("#candidateId").val(),
+        firstName: $("#firstName").val(),
+        lastName: $("#lastName").val(),
+        email: $("#email").val(),
+        phoneNumber: $("#phoneNumber").val(),
+        dateOfBirth: $("#dateOfBirth").val(),
+        skills: $("#skills").val(),
+        experienceYears: $("#experienceYears").val(),
+        resumeUrl: $("#resumeUrl").val(),
+      };
+
+      if (!candidateData.firstName) {
+        showErrorToast("First Name is required.");
+        $("#firstName").focus();
+        return false;
+      }
+
+      if (!candidateData.lastName) {
+        showErrorToast("Last name is required.");
+        $("#lastName").focus();
+        return false;
+      }
+
+      if (!candidateData.email) {
+        showErrorToast("Email is required.");
+        $("#email").focus();
+        return false;
+      }
+
+      if (!candidateData.dateOfBirth) {
+        showErrorToast("Date of Birth is required.");
+        $("#dateOfBirth").focus();
+        return false;
+      }
+
+      if (!candidateData.skills) {
+        showErrorToast("Skils is required.");
+        $("#skils").focus();
+        return false;
+      }
+
+      if (!candidateData.experienceYears) {
+        showErrorToast("Experience is required.");
+        $("#experienceYears").focus();
+        return false;
+      }
+      
+      console.log("Data {}", candidateData);
+
+      $.ajax({
+        url: "/candidates",
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(candidateData),
+      })
+        .done(function () {
+          showSuccessToast("Data saved successfully!");
+          //window.location.href = "/dashboard";
+        })
+        .fail(function (xhr) {
+          showErrorToast(xhr.responseText);
+        })
+        .always(function () {
+          $("#saveButton").prop("disabled", false).text("Save Changes");
+        });
+    }
+  </script>
 </head>
 
 <body>
@@ -65,7 +142,7 @@
             </div>
           </div>
           <div class="text-left">
-            <button type="submit" class="btn btn-primary" id="saveButton">
+            <button type="button" class="btn btn-primary" id="saveButton">
               Save Changes
             </button>
           </div>
@@ -73,69 +150,6 @@
       </div>
     </div>
   </div>
-
-  <script>
-    $(document).ready(function () {
-      const candidateId = new URLSearchParams(window.location.search).get(
-        "id"
-      );
-
-      if (candidateId) {
-        // Fetch candidate data for update
-        $.get(`/api/candidates/${candidateId}`, function (data) {
-          $("#candidateId").val(data.id);
-          $("#firstName").val(data.firstName);
-          $("#lastName").val(data.lastName);
-          $("#email").val(data.email);
-          $("#phoneNumber").val(data.phoneNumber);
-          $("#dateOfBirth").val(data.dateOfBirth);
-          $("#skills").val(data.skills);
-          $("#experienceYears").val(data.experienceYears);
-          $("#resumeUrl").val(data.resumeUrl);
-          $("#saveButton").text("Update Candidate");
-        });
-      }
-
-      $("#candidateForm").submit(function (e) {
-        e.preventDefault();
-
-        const candidateData = {
-          id: $("#candidateId").val(),
-          firstName: $("#firstName").val(),
-          lastName: $("#lastName").val(),
-          email: $("#email").val(),
-          phoneNumber: $("#phoneNumber").val(),
-          dateOfBirth: $("#dateOfBirth").val(),
-          skills: $("#skills").val(),
-          experienceYears: $("#experienceYears").val(),
-          resumeUrl: $("#resumeUrl").val(),
-        };
-
-        const url = candidateId
-          ? `/api/candidates/${candidateId}`
-          : "/api/candidates";
-        const method = candidateId ? "PUT" : "POST";
-
-        $.ajax({
-          url: url,
-          method: method,
-          contentType: "application/json",
-          data: JSON.stringify(candidateData),
-          success: function () {
-            alert(
-              candidateId
-                ? "Candidate updated successfully!"
-                : "Candidate created successfully!"
-            );
-            window.location.href = "/dashboard";
-          },
-          error: function (xhr) {
-            alert(`Error: ${xhr.responseText}`);
-          },
-        });
-      });
-    });
-  </script>
 </body>
 
 </html>

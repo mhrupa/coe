@@ -32,12 +32,17 @@ public class NavigationController {
 
 	@GetMapping(value = "/dashboard")
 	public String getDashboard() {
-		return "candidate/profile";
+		return "dashboardLayout/dashboard";
 	}
 
 	@GetMapping(value = "/candidate-profile")
 	public String getCandidateProfile() {
 		return "candidate/createProfile";
+	}
+
+	@GetMapping(value = "/candidate")
+	public String getCandidatePage() {
+		return "candidate/candidate";
 	}
 
 	@GetMapping(value = "/candidate-screening")

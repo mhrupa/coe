@@ -17,6 +17,9 @@ public class Candidate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "job_id", nullable = false)
+    private String jobId;
+
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
@@ -40,4 +43,7 @@ public class Candidate {
 
     @Column(name = "resume_url")
     private String resumeUrl;
+
+    @Column(name = "status")
+    private String status;
 }

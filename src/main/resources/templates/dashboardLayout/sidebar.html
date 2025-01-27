@@ -2,29 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <div class="container-fluid">
   <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 d-md-block bg-light sidebar collapse shadow sidebar-collapse" th:fragment="sidebar">
+    <nav id="sidebarMenu" class="col-md-3 d-md-block bg-light sidebar collapse shadow sidebar-collapse"
+      th:fragment="sidebar">
       <div class="position-sticky pt-3">
         <ul class="list-unstyled ps-0">
           <li class="mb-1">
             <a style="display: flex;" class="side-nav-link side-nav-menu-heading btn align-items-center collapsed"
               data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true">
-              <span data-feather="activity"></span><span class="ps-1">Dashboard</span>
+              <span data-feather="activity"></span><span class="ps-1"
+                onclick="showContent('dashboard')">Dashboard</span>
             </a>
           </li>
           <li class="mb-1">
             <a style="display: flex;" class="side-nav-link side-nav-menu-heading btn align-items-center collapsed"
               data-bs-toggle="collapse" data-bs-target="#candidate-collapse" aria-expanded="false">
-              <span data-feather="home"></span><span class="ps-1">Cadidate</span>
-              <div style="outline: none;" class="side-nav-menu btn-toggle" data-icon="angle-down">
-              </div>
+              <span data-feather="users"></span><span class="ps-1" onclick="showContent('candidate')">Cadidate</span>
+              <!-- <div style="outline: none;" class="side-nav-menu btn-toggle" data-icon="angle-down">
+              </div> -->
             </a>
-            <div class="collapse" id="candidate-collapse">
+            <!-- <div class="collapse" id="candidate-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="#" class="link-dark rounded">Overview</a></li>
+                <li><a href="#" class="link-dark rounded" onclick="showContent('candidate')">Overview</a></li>
                 <li><a href="#" class="link-dark rounded" onclick="showContent('candidate-profile')">Add</a></li>
                 <li><a href="#" class="link-dark rounded">Update</a></li>
               </ul>
-            </div>
+            </div> -->
           </li>
         </ul>
 
@@ -52,4 +54,5 @@
     </nav>
   </div>
 </div>
+
 </html>
