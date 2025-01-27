@@ -1,123 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create or Update Candidate</title>
-  </head>
-  <body>
-    <div class="container mt-5" style="width: 800px;">
-      <div class="card shadow">
-        <div class="card-header">
-          <h6 class="mb-0  p-2">Create or Update Candidate</h6>
-        </div>
-        <div class="card-body">
-          <form id="candidateForm">
-            <input type="hidden" id="candidateId" name="id" />
-                <div class="form-floating mb-2">
-                    <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
-                    <label for="firstName" class="form-label-extra-small  mb-0">First Name</label>
-                </div>
-                <div class="form-floating mb-2">
-                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
-                    <label for="lastName" class="form-label-extra-small  mb-0">Last Name</label>
-                </div>
-                <div class="form-floating mb-2">
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
-                    <label for="email" class="form-label-extra-small  mb-0">Email</label>
-                </div>
-                <div class="form-floating mb-2">
-                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone Number">
-                    <label for="phoneNumber" class="form-label-extra-small  mb-0">Phone Number</label>
-                </div>
-                <div class="form-floating mb-2">
-                    <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth">
-                    <label for="dateOfBirth" class="form-label-extra-small  mb-0">Date of Birth</label>
-                </div>
-                <div class="form-floating mb-2">
-                    <input type="text" class="form-control" id="skills" name="skills" placeholder="Skills">
-                    <label for="skills" class="form-label-extra-small  mb-0">Skills</label>
-                </div>
-                <div class="form-floating mb-2">
-                    <input type="number" class="form-control" id="experienceYears" name="experienceYears" placeholder="Experience in Years">
-                    <label for="experienceYears" class="form-label-extra-small  mb-0">Experience (Years)</label>
-                </div>
-                <div class="form-floating mb-2">
-                    <input type="url" class="form-control" id="resumeUrl" name="resumeUrl" placeholder="Resume URL">
-                    <label for="resumeUrl" class="form-label-extra-small  mb-0">Resume URL</label>
-            </div>
 
-            <div class="text-center">
-              <button type="submit" class="btn btn-primary" id="saveButton">
-                Save Candidate Profile
-              </button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Candidate</title>
+</head>
+
+<body>
+  <div
+    class="d-flex px-3 justify-content-between flex-wrap bg-white flex-md-nowrap align-items-center pt-2 pb-2 mb-3 border-bottom"
+    th:fragment="dashboard">
+    <h1 class="h6 fs-6 pt-2 fw-normal">Candidate > Create</h1>
+  </div>
+  <div class="container mt-5 col-xl-8">
+    <div class="card shadow">
+      <div class="card-header">
+        <h6 class="mb-0 py-2">Create Candidate</h6>
+      </div>
+      <div class="card-body">
+        <form id="candidateForm">
+          <input type="hidden" id="candidateId" name="id" />
+          <div class="row">
+            <div class="mb-3 col-md-6">
+              <label for="firstName" class="small mb-1 coe-label">First Name</label>
+              <input type="text" class="form-control coe-input" id="firstName" placeholder="First Name" required>
             </div>
-          </form>
-        </div>
+            <div class="mb-3 col-md-6">
+              <label for="lastName" class="small mb-1 coe-label">Last Name</label>
+              <input type="text" class="form-control coe-input" id="lastName" name="lastName" placeholder="Last Name"
+                required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb-3 col-md-6">
+              <label for="email" class="form-label-extra-small mb-0 coe-label">Email</label>
+              <input type="email" class="form-control coe-input" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="mb-3 col-md-6">
+              <label for="phoneNumber" class="form-label-extra-small mb-0 coe-label">Phone Number</label>
+              <input type="text" class="form-control coe-input" id="phoneNumber" name="phoneNumber"
+                placeholder="Phone Number">
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb-3 col-md-6">
+              <label for="dateOfBirth" class="form-label-extra-small mb-0 coe-label">Date of Birth</label>
+              <input type="date" class="form-control coe-input" id="dateOfBirth" name="dateOfBirth">
+            </div>
+            <div class="mb-3 col-md-6">
+              <label for="skills" class="form-label-extra-small mb-0 coe-label">Skills</label>
+              <input type="text" class="form-control coe-input" id="skills" name="skills" placeholder="Skills">
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb-3 col-md-6">
+              <label for="experienceYears" class="form-label-extra-small mb-0 coe-label">Experience (Years)</label>
+              <input type="number" class="form-control coe-input" id="experienceYears" name="experienceYears"
+                placeholder="Experience in Years">
+            </div>
+            <div class="mb-3 col-md-6">
+              <label for="resumeUrl" class="form-label-extra-small mb-0 coe-label">Resume URL</label>
+              <input type="url" class="form-control coe-input" id="resumeUrl" name="resumeUrl" placeholder="Resume URL">
+            </div>
+          </div>
+          <div class="text-left">
+            <button type="submit" class="btn btn-primary" id="saveButton">
+              Save Changes
+            </button>
+          </div>
+        </form>
       </div>
     </div>
+  </div>
 
-    <script>
-      $(document).ready(function () {
-        const candidateId = new URLSearchParams(window.location.search).get(
-          "id"
-        );
+  <script>
+    $(document).ready(function () {
+      const candidateId = new URLSearchParams(window.location.search).get(
+        "id"
+      );
 
-        if (candidateId) {
-          // Fetch candidate data for update
-          $.get(`/api/candidates/${candidateId}`, function (data) {
-            $("#candidateId").val(data.id);
-            $("#firstName").val(data.firstName);
-            $("#lastName").val(data.lastName);
-            $("#email").val(data.email);
-            $("#phoneNumber").val(data.phoneNumber);
-            $("#dateOfBirth").val(data.dateOfBirth);
-            $("#skills").val(data.skills);
-            $("#experienceYears").val(data.experienceYears);
-            $("#resumeUrl").val(data.resumeUrl);
-            $("#saveButton").text("Update Candidate");
-          });
-        }
+      if (candidateId) {
+        // Fetch candidate data for update
+        $.get(`/api/candidates/${candidateId}`, function (data) {
+          $("#candidateId").val(data.id);
+          $("#firstName").val(data.firstName);
+          $("#lastName").val(data.lastName);
+          $("#email").val(data.email);
+          $("#phoneNumber").val(data.phoneNumber);
+          $("#dateOfBirth").val(data.dateOfBirth);
+          $("#skills").val(data.skills);
+          $("#experienceYears").val(data.experienceYears);
+          $("#resumeUrl").val(data.resumeUrl);
+          $("#saveButton").text("Update Candidate");
+        });
+      }
 
-        $("#candidateForm").submit(function (e) {
-          e.preventDefault();
+      $("#candidateForm").submit(function (e) {
+        e.preventDefault();
 
-          const candidateData = {
-            id: $("#candidateId").val(),
-            firstName: $("#firstName").val(),
-            lastName: $("#lastName").val(),
-            email: $("#email").val(),
-            phoneNumber: $("#phoneNumber").val(),
-            dateOfBirth: $("#dateOfBirth").val(),
-            skills: $("#skills").val(),
-            experienceYears: $("#experienceYears").val(),
-            resumeUrl: $("#resumeUrl").val(),
-          };
+        const candidateData = {
+          id: $("#candidateId").val(),
+          firstName: $("#firstName").val(),
+          lastName: $("#lastName").val(),
+          email: $("#email").val(),
+          phoneNumber: $("#phoneNumber").val(),
+          dateOfBirth: $("#dateOfBirth").val(),
+          skills: $("#skills").val(),
+          experienceYears: $("#experienceYears").val(),
+          resumeUrl: $("#resumeUrl").val(),
+        };
 
-          const url = candidateId
-            ? `/api/candidates/${candidateId}`
-            : "/api/candidates";
-          const method = candidateId ? "PUT" : "POST";
+        const url = candidateId
+          ? `/api/candidates/${candidateId}`
+          : "/api/candidates";
+        const method = candidateId ? "PUT" : "POST";
 
-          $.ajax({
-            url: url,
-            method: method,
-            contentType: "application/json",
-            data: JSON.stringify(candidateData),
-            success: function () {
-              alert(
-                candidateId
-                  ? "Candidate updated successfully!"
-                  : "Candidate created successfully!"
-              );
-              window.location.href = "/dashboard";
-            },
-            error: function (xhr) {
-              alert(`Error: ${xhr.responseText}`);
-            },
-          });
+        $.ajax({
+          url: url,
+          method: method,
+          contentType: "application/json",
+          data: JSON.stringify(candidateData),
+          success: function () {
+            alert(
+              candidateId
+                ? "Candidate updated successfully!"
+                : "Candidate created successfully!"
+            );
+            window.location.href = "/dashboard";
+          },
+          error: function (xhr) {
+            alert(`Error: ${xhr.responseText}`);
+          },
         });
       });
-    </script>
-  </body>
+    });
+  </script>
+</body>
+
 </html>

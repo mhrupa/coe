@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <div class="container-fluid">
   <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse shadow" th:fragment="sidebar">
+    <nav id="sidebarMenu" class="col-md-3 d-md-block bg-light sidebar collapse shadow sidebar-collapse" th:fragment="sidebar">
       <div class="position-sticky pt-3">
         <ul class="list-unstyled ps-0">
           <li class="mb-1">
@@ -21,7 +21,7 @@
             <div class="collapse" id="candidate-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                 <li><a href="#" class="link-dark rounded">Overview</a></li>
-                <li><a href="#" class="link-dark rounded">Add</a></li>
+                <li><a href="#" class="link-dark rounded" onclick="showContent('candidate-profile')">Add</a></li>
                 <li><a href="#" class="link-dark rounded">Update</a></li>
               </ul>
             </div>
@@ -50,26 +50,6 @@
         </ul>
       </div>
     </nav>
-
-    <!-- <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"> -->
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-0">
-      <div
-        class="d-flex px-3 justify-content-between flex-wrap bg-white flex-md-nowrap align-items-center pt-2 pb-2 mb-3 border-bottom">
-        <h1 class="h6 fs-6 pt-1">Dashboard</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
-          <div class="btn-group me-2">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-          </div>
-          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-            <span data-feather="calendar"></span>
-            This week
-          </button>
-        </div>
-      </div>
-
-      <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-    </main>
   </div>
 </div>
 </html>

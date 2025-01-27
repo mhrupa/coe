@@ -20,6 +20,11 @@ public class NavigationController {
 		return "login";
 	}
 
+	@GetMapping(value = "/desktop")
+	public String getDesktopPage() {
+		return "desktop";
+	}
+
 	@GetMapping(value = "/sidebar")
 	public String getSidebarPage() {
 		return "dashboardLayout/sidebar";

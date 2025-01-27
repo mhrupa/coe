@@ -1,59 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CoE</title>
-  <script>
-    $(document).ready(function () {
-      $("#sidebarMenu").load("/sidebar");
-      $("#dashboardContent").load("/dashboard");
-
-      const toggleSidebarButton = document.getElementById("toggle-sidebar");
-      toggleSidebarButton.addEventListener("click", toggleSideBar);
-
-      toggleSideBar();
-    });
-
-    function toggleSideBar() {
-      const sidebar = document.querySelector(".sidebar");
-      sidebar.classList.toggle("d-none");
-    }
-  </script>
-</head>
-
-<body>
-  <!-- Main Wrapper -->
-  <div class="d-flex" id="app-wrapper">
-    <!-- Main Content Area -->
-    <div class="main-content p-4 shadow" style="flex: 1">
-      <!-- Header Section -->
-      <header class="d-flex justify-content-between align-items-center mb-4">
-        <div class="d-flex align-items-center">
-          <button class="btn btn-sm btn-outline-secondary me-3" id="toggle-sidebar">
-            ☰
-          </button>
-          <h4>Welcome to Center of Excellence</h4>
-        </div>
-        <div>
-          <span id="user-email"><span th:text="${user.email}"></span></span>
-          <button class="btn btn-sm btn-danger ms-3">Logout</button>
-        </div>
-      </header>
-      <!-- Main Content Goes Here -->
-      <div class="content-area">
-        <!-- Example of a card -->
-        <div id="dashboardContent"></div>
-        <!-- Additional content can be added here -->
-      </div>
-
-      <!-- Sidebar -->
-      <div class="sidebar bg-dark text-white p-3" style="width: 250px; height: 100vh">
-        <div id="sidebarMenu" style="width: 100%"></div>
-      </div>
+<div
+  class="d-flex px-3 justify-content-between flex-wrap bg-white flex-md-nowrap align-items-center pt-2 pb-2 mb-3 border-bottom"
+  th:fragment="dashboard">
+  <h1 class="h6 fs-6 pt-1">Dashboard</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group me-2">
+      <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+      <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
     </div>
+    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+      <span data-feather="calendar"></span>
+      This week
+    </button>
   </div>
-</body>
+</div>
 
 </html>

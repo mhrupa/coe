@@ -2,12 +2,45 @@
     font-size: 0.85rem;
 }
 
-input::placeholder, textarea::placeholder {
-    font-size: 0.9rem; /* Adjust the font size as needed */
-    color: #6c757d; /* Optional: Change placeholder color */
+input::placeholder,
+textarea::placeholder {
+    font-size: 0.9rem;
+    /* Adjust the font size as needed */
+    color: #6c757d;
+    /* Optional: Change placeholder color */
 }
 
 select {
-    font-size: 0.8rem; /* Adjust the font size */
-    color: #6c757d; /* Optional: Change color */
+    font-size: 0.8rem;
+    /* Adjust the font size */
+    color: #6c757d;
+    /* Optional: Change color */
+}
+
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1* var(--bs-gutter-y));
+    margin-right: calc(-.5* var(--bs-gutter-x));
+    margin-left: calc(-.5* var(--bs-gutter-x));
+}
+
+.coe-label {
+    color: #6c757d;
+}
+
+.coe-input {
+    color: #6c757d;
+}
+
+.coe-input:focus {
+    color: #6c757d;
+}
+
+.coe-input::placeholder {
+    color: #6c757d;
+    opacity: 1;
+    /* Firefox */
 }

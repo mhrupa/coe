@@ -1,85 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Question and Answer UI</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>CoE</title>
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
     <script>
         $(document).ready(function () {
-            // Function to fetch random question and answer with parameters
-            function fetchRandomQuestion(noOfQuestions, topicList, level) {
-                $.ajax({
-                    url: '/random-question',  // Endpoint with /api prefix as handled by your interceptor
-                    method: 'POST',
-                    contentType: 'application/json', // Send as JSON
-                    data: JSON.stringify({
-                        noOfQuestions: noOfQuestions,
-                        topicList: topicList,
-                        level: level
-                    }),
-                    success: function (data) {
-                        // Assuming the backend returns a JSON array of questions and answers
-                        if (data && data.length > 0) {
-                            const question = data[0].questionString;  // Assuming first question is used
-                            const answer = data[0].answer;
+            feather.replace();
 
-                            // Update the question and answer sections
-                            $('#question-text').text(question);
-                            $('#answer-text').text(answer);
-                        } else {
-                            console.log('No questions available.');
-                        }
-                    },
-                    error: function (error) {
-                        console.error('Error fetching random question:', error);
+            $('.side-nav-menu-heading').on('click', function () {
+                const $this = $(this);
+
+                // Close all other menu headings
+                $('.side-nav-menu-heading').not($this).each(function () {
+                    $(this)
+                        .addClass('collapsed')
+                        .attr('data-bs-toggle', 'collapse')
+                        .attr('aria-expanded', 'false');
+                    const targetId = $(this).data('bs-target');
+                    if (targetId) {
+                        $(targetId).removeClass('show');
                     }
                 });
-            }
 
-            // Fetch the first random question on page load with initial parameters
-            fetchRandomQuestion(1, ['Core Java'], 'Intermediate');  // Example parameters
+                $('.side-nav-menu-heading').removeClass('active');
+                $(this).addClass('active');
+            });
 
-            // Add click event for the "Next" button to fetch the next random question
-            $('#next-btn').click(function() {
-                fetchRandomQuestion(1, ['Core Java'], 'Intermediate');  // Example parameters for next question
+            $("#sidebarToggle").on('click', function () {
+                $(".sidebar-collapse").toggleClass('collapsed');
+                $(".main").toggleClass('collapsed');
             });
         });
+
     </script>
 </head>
-<body>
-    <div class="container my-4">
-        <!-- Section: User Info (Only Email on the right) -->
-        <div class="alert alert-info d-flex justify-content-end">
-            <p id="user-email"><strong>Email:</strong> <span th:text="${user.email}"></span></p>
-        </div>
 
-        <!-- Next Button -->
-        <div class="mb-3 text-end">
-            <button class="btn btn-primary" id="next-btn">Next</button>
-        </div>
-
-        <!-- Section: Question and Answer side by side -->
-        <div class="d-flex justify-content-between mb-3">
-            <!-- Question -->
-            <div class="card me-3" style="width: 48%;">
-                <div class="card-header bg-warning">
-                    <h5 class="mb-0">Question</h5>
-                </div>
-                <div class="card-body">
-                    <p id="question-text">What is the capital of France?</p>
-                </div>
-            </div>
-
-            <!-- Answer -->
-            <div class="card" style="width: 48%;">
-                <div class="card-header bg-success text-white">
-                    <h5 class="mb-0">Answer</h5>
-                </div>
-                <div class="card-body">
-                    <p id="answer-text">The capital of France is Paris.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+<body style="background-color: #F2F6FC;">
+    <div th:replace="dashboardLayout/header :: header"></div>
+    <div th:replace="dashboardLayout/sidebar :: sidebar"></div>
+    <div th:replace="dashboardLayout/maincontent :: maincontent"></div>
 </body>
+
 </html>

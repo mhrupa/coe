@@ -1,68 +1,50 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <title>CoE</title>
-  <!-- Bootstrap core CSS -->
-  <link href="/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/css/dashboard.css" rel="stylesheet">
-  <link href="/css/sidebars.css" rel="stylesheet">
-  <script src="/js/bootstrap.bundle.min.js"></script>
-  <script src="/js/jquery-3.6.0.min.js"></script>
-  <script src="/js/sidebars.js"></script>
-  <script src="/js/feather.min.js"></script>
-  <script src="/js/question.js"></script>
-  <script src="/js/toastHelper.js"></script>
+    <title>CoE</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/dashboard.css" rel="stylesheet">
+    <link href="/css/sidebars.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/js/sidebars.js"></script>
+    <script src="/js/feather.min.js"></script>
+    <script src="/js/question.js"></script>
+    <script src="/js/toastHelper.js"></script>
 
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
-  <script>
-    $(document).ready(function () {
-      feather.replace();
-
-      $('.side-nav-menu-heading').on('click', function () {
-        const $this = $(this);
-
-        // Close all other menu headings
-        $('.side-nav-menu-heading').not($this).each(function () {
-          $(this)
-            .addClass('collapsed')
-            .attr('data-bs-toggle', 'collapse')
-            .attr('aria-expanded', 'false');
-          const targetId = $(this).data('bs-target');
-          if (targetId) {
-            $(targetId).removeClass('show');
-          }
+    <script type="text/javascript">
+        $.ajaxSetup({
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            beforeSend: function (xhr, settings) {
+                settings.url = "/api" + settings.url;
+            }
         });
-
-        $('.side-nav-menu-heading').removeClass('active');
-        $(this).addClass('active');
-      });
-    });
-
-  </script>
+        $(document).ready(function () {
+            $(".numberOnly").keypress(function (e) {
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) { return false; }
+            });
+            //$("#desktop").load("/login");
+            $("#desktop").load("/desktop");
+        });
+    </script>
 </head>
 
-<body style="background-color: #F2F6FC;">
-
-  <div th:replace="dashboardLayout/header :: header"></div>
-  <div th:replace="dashboardLayout/sidebar :: sidebar"></div>
+<body>
+    <div id="desktop">Loading...</div>
+    <div class="toast position-absolute top-0 end-0 m-1 text-light align-items-center bg-success" role="alert"
+        style="z-index: 10000;" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div id="coeToast" class="toast-body"></div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
 </body>
 
 </html>

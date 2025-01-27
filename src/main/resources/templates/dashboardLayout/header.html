@@ -2,13 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <body>
-    <header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow" th:fragment="header">
+    <header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow"
+        style="background-color: #662a53 !important;color: white;" th:fragment="header">
         <div class="container-fluid py-3">
-            <span data-feather="menu" id="sidebarToggle"></span>
+            <span data-feather="menu" class="sidebar-toggle" style="max-width: 30px;" id="sidebarToggle"></span>
+            <span class="navbar-brand" style="color: white">Quest Global - Welcome to CoE</span>
             <div class="nav-item text-nowrap">
                 <a class="nav-link px-3" href="#">Sign out</a>
             </div>
         </div>
     </header>
 </body>
+
 </html>
